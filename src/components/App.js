@@ -50,7 +50,6 @@ function App() {
     function handleRegPageSubmit(info) {
         auth.register(info.email, info.password)
             .then((res) => {
-                setIsInfoToolTip(true);
                 setParamsInfoToolTip({
                     text: 'Вы успешно зарегистрировались!',
                     imagePath: successPic,
@@ -58,12 +57,12 @@ function App() {
                 navigate('./sign-in', {replace: true});
             })
             .catch(err => {
-                setIsInfoToolTip(true);
                 setParamsInfoToolTip({
                     text: 'Что-то пошло не так! Попробуйте еще раз.',
                     imagePath: failPic,
                 })
-            });
+            })
+            .finally(() => setIsInfoToolTip(true))
     }
 
     function handleLogin(data) {
@@ -83,10 +82,11 @@ function App() {
                 .then((res) =>{
                     setCurrentUserEmail(res.data.email);
                     setLoggedIn(true);
-                    setIsLoadingPage(false);
                 })
-                .catch(err => alert(err));
+                .catch(err => alert(err))
+                .finally(() => setIsLoadingPage(false))
         }
+        setIsLoadingPage(false);
     }
 
     function Logout() {
@@ -130,7 +130,7 @@ function App() {
         setIsEditAvatarPopupLoading(true);
         api.updateAvatar(link)
             .then(res => {
-                setCurrentUser(...currentUser, res);
+                setCurrentUser(res);
                 closeAllPopups();
             })
             .catch(err =>alert(err))
@@ -145,7 +145,7 @@ function App() {
         setIsEditProfilePopupLoading(true);
         api.updateUserInfo(info)
             .then(res => {
-                setCurrentUser(...currentUser, res);
+                setCurrentUser(res);
                 closeAllPopups();
             })
             .catch(err => alert(err))
@@ -187,6 +187,10 @@ function App() {
     }
 
     React.useEffect(() => {
+        tokenCheck();
+    }, []);
+
+    React.useEffect(() => {
         if (loggedIn === true) {
             setIsLoadingProfile(true);
         setIsLoadingCards(true);
@@ -205,17 +209,13 @@ function App() {
         }
     }, [loggedIn]);
 
-    React.useEffect(() => {
-        tokenCheck();
-    }, [])
-
     return (
     <CurrentUserContext.Provider value={currentUser} >
         {isLoadingPage ? <Spinner position={'load'}/> 
         :   <>
                 <Header loggedIn={loggedIn} userEmail={currentUserEmail} onLogout={Logout}/>
                 <Routes>
-                    <Route path='/sign-up' element={<Register onSubmit={(info) => handleRegPageSubmit(info)} />} />
+                    <Route path='/sign-up' element={<Register onRegister={(info) => handleRegPageSubmit(info)} />} />
                     <Route path='/sign-in' element={<Login loggedIn={loggedIn} onLogin={(data) => handleLogin(data)} />} />
                     <Route path="/" element={<ProtectedRoute element={Main} 
                         onEditProfile={() => handleEditProfileClick()}

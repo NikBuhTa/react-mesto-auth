@@ -1,7 +1,7 @@
 const options = {
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
     headers: {
-        authorization: 'b6ae1ce5-1938-46cc-b6c2-03f1a1f5c076',
+        'authorization': 'b6ae1ce5-1938-46cc-b6c2-03f1a1f5c076',
         'Content-Type': 'application/json'
     }
 }
@@ -10,6 +10,26 @@ class Api {
     constructor({baseUrl, headers}) {
         this._baseUrl = baseUrl;
         this._headers = headers;
+    }
+
+    _makeRequest(endpoint, method, body = undefined) {
+        const config = {
+            method: method,
+            headers: this._headers,
+        }
+    
+        if (body !== undefined) {
+            config.body = JSON.stringify(body)
+        }
+    
+        return fetch(`${this._baseUrl}/${endpoint}`, config)
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(res.status);
+                }
+            })
     }
 
     _getResponseData(res) {
@@ -21,76 +41,35 @@ class Api {
     }
 
     getUserInfo() {
-        return fetch(`${this._baseUrl}/users/me`, {
-            headers: this._headers
-        })
-            .then(res => api._getResponseData(res))
+        return this._makeRequest('users/me', 'GET', undefined)
     }
 
     getCards() {
-        return fetch(`${this._baseUrl}/cards`, {
-            headers: this._headers
-        })
-            .then(res => api._getResponseData(res))
+        return this._makeRequest('cards', 'GET', undefined);
     }
 
     updateAvatar(avatar) {
-        return fetch(`${this._baseUrl}/users/me/avatar`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-                avatar: avatar,
-            })
-        })
-        .then(res => api._getResponseData(res))
+        return this._makeRequest('users/me/avatar', 'PATCH', {avatar});
     }
 
     updateUserInfo({name, about}) {
-        return fetch(`${this._baseUrl}/users/me`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-                name: name,
-                about: about,
-            })
-        })
-            .then(res => api._getResponseData(res))
+        return this._makeRequest('users/me', 'PATCH', {name, about});
     }
 
     addCard({name, link}){
-        return fetch(`${this._baseUrl}/cards`, {
-            method: 'POST',
-            headers: this._headers,
-            body: JSON.stringify({
-                name: name,
-                link: link,
-            })
-        })
-            .then(res => api._getResponseData(res))
+        return this._makeRequest('cards', 'POST', {name, link});
     }
 
     deleteCard(cardId){
-        return fetch(`${this._baseUrl}/cards/${cardId}`, {
-            method: 'DELETE',
-            headers: this._headers
-        })
-            .then(res => api._getResponseData(res))
+        return this._makeRequest(`cards/${cardId}`, 'DELETE', undefined);
     }
 
     likeCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-            method: 'PUT',
-            headers: this._headers,
-        })
-            .then(res => api._getResponseData(res))
+        return this._makeRequest(`cards/${cardId}/likes`, 'PUT', undefined);
     }
 
     dislikeCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-            method: 'DELETE',
-            headers: this._headers,
-        })
-            .then(res => api._getResponseData(res))
+        return this._makeRequest(`cards/${cardId}/likes`, 'DELETE', undefined);
     }
 }
 
