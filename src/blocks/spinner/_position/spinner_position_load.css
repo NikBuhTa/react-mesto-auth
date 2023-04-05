@@ -1,0 +1,18 @@
+.spinner_position_load {
+    width: 300px;
+    height: 300px;
+    left: 40%;
+    top: 30%;
+}
+
+@media screen and (max-width: 879px) {
+    .spinner_position_load {
+        left: 32%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .spinner_position_load{
+        left: 16%;
+    }
+}

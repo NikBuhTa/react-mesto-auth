@@ -1,0 +1,15 @@
+.popup__button-place {
+    max-width: 510px;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0 0 8px;
+}
+
+@media screen and (max-width: 580px) {
+    .popup__button-place {
+        max-width: 282px;
+        margin-bottom: 16px;
+        height: 20px;
+    }
+}

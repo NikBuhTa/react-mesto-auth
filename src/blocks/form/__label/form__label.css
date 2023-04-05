@@ -1,0 +1,15 @@
+.form__label {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0 auto 0;
+    max-width: 358px;
+    width: 100%;
+}
+
+@media screen and (max-width: 580px) {
+    .form__label {
+        max-width: 238px;
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,20 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 300px;
+    position: relative;
+}
+
+@media screen and (max-width: 879px) {
+    .section {
+        max-width: 585px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .section {
+        max-width: 282px;
+    }
+}

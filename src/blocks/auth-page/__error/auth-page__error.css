@@ -1,0 +1,16 @@
+.auth-page__error {
+    visibility: none;
+    box-sizing: border-box;
+    min-height: 31px;
+    height: 100%;
+    max-width: 358px;
+    width: 100%;
+    border: 0;
+    margin: 5px auto 0;
+    color: red;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+}

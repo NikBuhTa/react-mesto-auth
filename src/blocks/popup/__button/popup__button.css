@@ -1,0 +1,27 @@
+.popup__button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    align-self: end;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .0);
+    color: white;
+    border: 0;
+    transition: 0.3s;
+    background-image: url('../../../images/popup_close-but.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.popup__button:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 580px) {
+    .popup__button {
+        width: 20px;
+        height: 20px;
+    }   
+}

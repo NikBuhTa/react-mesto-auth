@@ -1,0 +1,21 @@
+.form__input {
+    box-sizing: border-box;
+    min-height: 27px;
+    height: 100%;
+    padding: 2px;
+    border: 0;
+    border-bottom: 1px solid rgb(0, 0, 0, .2);
+    font-family: 'Inter', Arial;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.form__input:focus {
+    outline: 0;
+}
+
+/*.form__input:nth-of-type(2n) {
+    margin-top: 30px;
+} */

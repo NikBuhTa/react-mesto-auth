@@ -1,0 +1,7 @@
+.profile__text {
+    max-width: 295px;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}

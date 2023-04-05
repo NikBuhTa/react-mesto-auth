@@ -1,0 +1,15 @@
+.auth-page__link {
+    margin: 0;
+    text-decoration: none;
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    cursor: pointer;
+}
+
+.auth-page__link:hover{
+    opacity: .6;
+}

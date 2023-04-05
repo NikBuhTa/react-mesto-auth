@@ -1,0 +1,25 @@
+.card__checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    transition: 0.3s;
+}
+
+.card__checkbox:hover +.card__checkbox-visible {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.card__checkbox:checked +.card__checkbox-visible {
+    background-image: url('../../../images/card-checkbox-ch.jpg');
+}
+
+.card__checkbox:focus +.card__checkbox-visible {
+    background-color: grey;
+}
+
+.card__checkbox:disabled +.card__checkbox-visible {
+    background-color: grey;
+}

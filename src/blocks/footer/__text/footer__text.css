@@ -1,0 +1,14 @@
+.footer__text {
+    font-family: 'Inter', Arial;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width: 580px) {
+    .footer__text {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

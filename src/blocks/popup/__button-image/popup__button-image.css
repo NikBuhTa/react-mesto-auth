@@ -1,0 +1,15 @@
+.popup__button-image {
+    max-width: 82vw;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0 0 8px;
+}
+
+@media screen and (max-width: 580px) {
+    .popup__button-image {
+        max-width: 75vw;
+        margin-bottom: 16px;
+        height: 20px;
+    }
+}

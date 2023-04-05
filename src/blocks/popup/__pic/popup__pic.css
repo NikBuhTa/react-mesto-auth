@@ -1,0 +1,9 @@
+.popup__pic {
+    box-sizing: border-box;
+    height: 120px;
+    width: 120px;
+    margin: 60px auto 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

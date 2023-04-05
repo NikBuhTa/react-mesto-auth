@@ -1,0 +1,10 @@
+.card__checkbox-visible {
+    display: inline-block;
+    vertical-align: middle;
+    width: 22px;
+    height: 19px;
+    background-image: url('../../../images/card-checkbox.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

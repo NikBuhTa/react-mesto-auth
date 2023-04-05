@@ -1,0 +1,7 @@
+.popup__container_background_white {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

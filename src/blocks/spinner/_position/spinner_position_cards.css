@@ -1,0 +1,18 @@
+.spinner_position_cards {
+    width: 200px;
+    height: 200px;
+    left: 40%;
+    top: 30%;
+}
+
+@media screen and (max-width: 879px) {
+    .spinner_position_cards {
+        left: 32%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .spinner_position_cards{
+        left: 12%;
+    }
+}

@@ -1,0 +1,19 @@
+.auth-page__input {
+        box-sizing: border-box;
+        min-height: 27px;
+        height: 100%;
+        padding: 2px 2px 13px;
+        border: 0;
+        border-bottom: 2px solid #CCCCCC;
+        background-color: black;
+        color: white;
+        font-family: 'Inter', Arial;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+}
+
+.auth-page__input:focus {
+    outline: 0;
+}

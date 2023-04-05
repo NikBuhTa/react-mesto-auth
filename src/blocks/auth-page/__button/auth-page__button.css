@@ -1,0 +1,30 @@
+.auth-page__button {
+    box-sizing: border-box;
+    max-width: 358px;
+    width: 100%;
+    min-height: 50px;
+    margin: 140px auto 15px;
+    padding: 0;
+    background-color: white;
+    color: black;
+    border-radius: 2px;
+    font-family: 'Inter', Arial;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.auth-page__button:hover {
+    background-color: rgb(255, 255, 255, .85);
+}
+
+@media screen and (max-width: 580px) {
+    .auth-page__button {
+        max-width: 238px;
+        min-height: 46px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
