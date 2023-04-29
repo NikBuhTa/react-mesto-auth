@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthForm from "./AuthForm";
+import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 function Register({onRegister}) {
-    const [userData, setUserData] = useState({email: '', password: ''});
+    const { values, handleChange, errors, isValid, resetForm, setValues} = useFormAndValidation({
+        email: '', password: '',
+    });
 
-    function handleChange(e) {
-        const {type, value} = e.target;
-        setUserData({...userData, [type] : value});
-    }
+    useEffect(() => {
+        resetForm();
+        setValues({
+            email: '', password: '',
+        })
+    }, []);
 
     function handleRegister(e) {
         e.preventDefault();
-        onRegister(userData);
+        onRegister(values);
     }
 
     return(
@@ -28,7 +33,8 @@ function Register({onRegister}) {
             }
             onSubmit={handleRegister}
             onChange={handleChange}
-            userData={userData}
+            userData={values}
+            vldProps={{errors, isValid}}
         />
     );
 }

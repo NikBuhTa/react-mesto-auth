@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import AuthForm from "./AuthForm";
+import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 function Login({loggedIn, onLogin}) {
-    const [userData, setUserData] = useState({email: '', password: ''});
 
-    function handleChange(e) {
-        const {type, value} = e.target;
-        setUserData({...userData, [type] : value});
-    }
+    const { values, handleChange, errors, isValid, resetForm, setValues} = useFormAndValidation({
+        email: '', password: '',
+    });
+
+    useEffect(() => {
+        resetForm();
+        setValues({
+            email: '', password: '',
+        })
+    }, []);
 
     function handleLogin(e) {
         e.preventDefault();
-        onLogin(userData);
+        onLogin(values);
     }
 
     if (loggedIn) {
@@ -30,7 +36,8 @@ function Login({loggedIn, onLogin}) {
             children={null}
             onSubmit={handleLogin}
             onChange={handleChange}
-            userData={userData}
+            userData={values}
+            vldProps={{errors, isValid}}
         />
     );
 }

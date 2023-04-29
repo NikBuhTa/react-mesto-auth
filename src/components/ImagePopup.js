@@ -1,8 +1,15 @@
 import React from "react";
 
 function ImagePopup({card, isOpen, onClose}) {
+
+    const handleOverlayClk = (e) => {
+        if(e.target === e.currentTarget && isOpen) {
+            onClose();
+        }
+    }
+
     return(
-        <div className={`popup popup_opacity_image ${isOpen ? 'popup_open' : ''}`} id="fullCardImage">
+        <div className={`popup popup_opacity_image ${isOpen ? 'popup_open' : ''}`} id="fullCardImage" onMouseDown={handleOverlayClk}>
             <figure className="popup__image-container">
                 <div className="popup__button-image">
                     <button type="button" className="popup__button" aria-label="закрыть" onClick={onClose} ></button>
