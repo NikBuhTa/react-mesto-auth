@@ -8,6 +8,7 @@
 - React Router
 - HTML5, CSS3
 - Adaptive Design
+- NPM менеджер пакетов
 
 ## <img src='https://www.svgrepo.com/show/197658/handshake-deal.svg' height=40px weight=40px> Возможности  
 1. Реализована регистрация и авторизация пользователей на сайт
