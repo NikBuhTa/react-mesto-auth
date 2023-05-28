@@ -6,8 +6,10 @@
 ## Инструкция по запуску
 Для того, чтобы скачать реп, введите сл. команды:
 > https://github.com/NikBuhTa/react-mesto-auth.git <br> cd react-mesto-auth
+
 Затем установите зависимости командой:
 > npm install 
+
 Чтобы запустить проект локально введите:
 > npm start
 
